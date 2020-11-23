@@ -15,6 +15,7 @@ import { OverviewPageComponent } from './overview-page/overview-page.component';
 import { HistoryPageComponent } from './history-page/history-page.component';
 import { OrderPageComponent } from './order-page/order-page.component';
 import { CategoriesPageComponent } from './categories-page/categories-page.component';
+import { LoaderComponent } from './shared/components/loader/loader.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { CategoriesPageComponent } from './categories-page/categories-page.compo
     OverviewPageComponent,
     HistoryPageComponent,
     OrderPageComponent,
-    CategoriesPageComponent
+    CategoriesPageComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,

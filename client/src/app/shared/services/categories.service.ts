@@ -29,7 +29,7 @@ export class CategoriesService {
         }
         fd.append('name', name);
 
-        return this.http.post<Category>('/api/category', {});
+        return this.http.post<Category>('/api/category', fd);
     }
 
     update(id: string, name: string, image?: File): Observable<Category> {
@@ -40,6 +40,6 @@ export class CategoriesService {
         }
         fd.append('name', name);
 
-        return this.http.patch<Category>(`/api/category/${id}`, {});
+        return this.http.patch<Category>(`/api/category/${id}`, fd); // Replace fd with empty object for BUG - broken edit category
     }
 }

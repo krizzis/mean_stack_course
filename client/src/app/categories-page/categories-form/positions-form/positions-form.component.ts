@@ -1,7 +1,5 @@
 import { AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { error } from 'protractor';
-import { of } from 'rxjs';
 import { MaterialInstance, MaterialService } from 'src/app/shared/classes/material.service';
 import { Position } from 'src/app/shared/interfaces';
 import { PositionsService } from 'src/app/shared/services/positions.service';

@@ -69,7 +69,7 @@ export class PositionsFormComponent implements OnInit, AfterViewInit, OnDestroy 
 
   onAddPosition() {    
     this.positionId = null;            
-    this.form.reset({             // Change to patchValue for BUG - old values on new position
+    this.form.patchValue({             // Change to patchValue for BUG - old values on new position - Backchange to 'reset'
       name: null,                   
       cost: 0
     })

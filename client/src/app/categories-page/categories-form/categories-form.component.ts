@@ -31,14 +31,14 @@ export class CategoriesFormComponent implements OnInit {
       name: new FormControl(null, Validators.required)
     })
 
-    this.form.disable(); // Comment for BUG - form editing while loaded
+    // this.form.disable(); // Comment for BUG - form editing while loaded
 
     this.route.params
       .pipe(
         switchMap(
           (params: Params) => {
             if (params['id']) {
-              this.isNew = false; // Comment for BUG - Breadcrums title
+              // this.isNew = false; // Comment for BUG - Breadcrums title
               return this.categoriesService.getById(params['id'])
             }
 
@@ -53,8 +53,8 @@ export class CategoriesFormComponent implements OnInit {
             this.form.patchValue({
               name: category.name
             })
-            this.imagePreview = category.imageSrc;  // Comment for BUG - not load image preview on edit
-            MaterialService.updateTextInputs() // Comment for BUG - name over placeholder
+            // this.imagePreview = category.imageSrc;  // Comment for BUG - not load image preview on edit
+            // MaterialService.updateTextInputs() // Comment for BUG - name over placeholder
           }
 
           this.form.enable()

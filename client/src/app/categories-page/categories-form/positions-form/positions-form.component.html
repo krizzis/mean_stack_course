@@ -22,7 +22,7 @@
                             {{position.name}} <strong>{{position.cost}} $</strong>
                         </span>
                         <span>
-                            <i class="material-icons">delete</i>
+                            <i class="material-icons" (click)="onDeletePosition($event, position)">delete</i>
                         </span>
                     </a>
                 </div>
@@ -39,26 +39,60 @@
         </div>
     </div>
 
-    
-<div class="modal" #modal>
-    <div class="modal-content">
-        <h4 class="mb1">Add new position</h4>
-        <div class="input-field">
-            <input id="pos-name" type="text" required>
-            <label for="pos-name">Name</label>
+<form
+    [formGroup]="form"
+    (ngSubmit)="onSubmit()"
+>
+    <div class="modal" #modal>
+        <div class="modal-content">
+            <h4 class="mb1">Add new position</h4>
+            <div class="input-field">
+                <input
+                    formControlName="name"
+                    id="pos-name"
+                    type="text"
+                    [ngClass]="{'invalid': form.get('name').invalid && form.get('name').touched}"
+                >
+                <label for="pos-name">Name</label>
+            </div>
+            <span
+                *ngIf="form.get('name').invalid && form.get('name').touched"
+                class="helper-text red-text"
+            >
+                Required field
+            </span>
+            <div class="input-field">
+                <input 
+                    formControlName="cost"
+                    [ngClass]="{'invalid': form.get('cost').invalid && form.get('cost').touched}"
+                    id="pos-cost" 
+                    type="number"
+                    min="0.1"
+                >
+                <label for="pos-cost">Price</label>
+                <span
+                    *ngIf="form.get('cost').invalid && form.get('cost').touched"
+                    class="helper-text red-text"
+                >
+                    Price should be greater than 0
+                </span>
+            </div>
         </div>
-        <div class="input-field">
-            <input id="pos-cost" type="text" required>
-            <label for="pos-cost">Price</label>
+        <div class="modal-footer">
+            <button 
+                type="button"
+                class="modal-action waves-effect waves-black btn-flat"
+                (click)="onCancel()"
+                [disabled]="form.disabled"
+            >
+                Cancel</button>
+            <button 
+                type="submit"
+                class="modal-action btn waves-effect"
+                [disabled]="form.invalid || form.disabled"
+            >
+                Save
+            </button>
         </div>
     </div>
-    <div class="modal-footer">
-        <button 
-            type="button"
-            class="modal-action waves-effect waves-black btn-flat"
-            (click)="onCancel()"
-        >
-            Cancel</button>
-        <button class="modal-action btn waves-effect">Save</button>
-    </div>
-</div>
+</form>    

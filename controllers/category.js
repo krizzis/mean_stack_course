@@ -27,7 +27,7 @@ module.exports.remove = async function(req, res) {
     try {
         const categoryId = req.params.id
         await Category.findOneAndRemove({_id: categoryId}); 
-        // await Position.remove({category: categoryId});  // TODO - https://stackoverflow.com/questions/50283081/mongodb-error-cannot-use-retryable-writes-with-limit-0
+        await Position.deleteMany({category: categoryId});  
         res.status(200).json({
             message: "Category and related positions have been deleted"
         });
